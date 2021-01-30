@@ -18,25 +18,18 @@ var calculator = {
 
 		return var1 / var2;
 	},
-	max: (values) => {
-		return Math.max(...values);
-	},
-	min: (values) => {
-		return Math.min(...values);
-	},
-	avg: (values) => {
-		let total = 0;
-		for (let n of values) {
-			total += n;
-		}
 
-		return values.length === 0 ? 'Array Empty' : total / values.length;
-	},
 	sqrt: (value) => {
 		return Math.sqrt(value);
 	},
 	pow: (val1, val2) => {
 		return Math.pow(val1, val2);
+	},
+	sin: (val) => {
+		return Math.sin(val);
+	},
+	cos: (val) => {
+		return Math.cos(val);
 	}
 };
 
@@ -49,11 +42,11 @@ function calc(operand) {
 		input1.value = result.innerHTML = calculator.add(var1, var2);
 		input2.value = '';
 	} else if (operand == '*') {
-		input1.value = result.innerHTML = calculator.mult(var1, var2);
+		input1.value = result.innerHTML = calculator.mult(var1, var2).toFixed(2);
 		input2.value = '';
 	} else if (operand == 'Sqrt') {
 		cls();
-		result.innerHTML = calculator.sqrt(var1);
+		result.innerHTML = calculator.sqrt(var1).toFixed(2);
 	} else if (operand == 'Pow') {
 		cls();
 		result.innerHTML = calculator.pow(var1, var2);
@@ -62,7 +55,13 @@ function calc(operand) {
 		result.innerHTML = calculator.subs(var1, var2);
 	} else if (operand == '/') {
 		cls();
-		result.innerHTML = calculator.div(var1, var2);
+		result.innerHTML = calculator.div(var1, var2).toFixed(2);
+	} else if (operand == 'sin') {
+		cls();
+		result.innerHTML = calculator.sin(var1).toFixed(2);
+	} else if (operand == 'cos') {
+		cls();
+		result.innerHTML = calculator.cos(var1).toFixed(2);
 	}
 }
 
