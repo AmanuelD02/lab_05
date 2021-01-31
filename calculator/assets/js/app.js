@@ -14,7 +14,8 @@ var calculator = {
 		return val1 * val2;
 	},
 	div: (var1, var2) => {
-		if (var2 == 0) return '∞';
+		console.log(`value ${var2}`);
+		if (var2 == 0) return 'Error';
 
 		return var1 / var2;
 	},
@@ -55,7 +56,11 @@ function calc(operand) {
 		result.innerHTML = calculator.subs(var1, var2);
 	} else if (operand == '/') {
 		cls();
-		result.innerHTML = calculator.div(var1, var2).toFixed(2);
+		if (typeof calculator.div(var1, var2) === 'number') {
+			result.innerHTML = calculator.div(var1, var2).toFixed(2);
+		} else {
+			result.innerHTML = calculator.div(var1, var2);
+		}
 	} else if (operand == 'sin') {
 		cls();
 		result.innerHTML = calculator.sin(var1).toFixed(2);
